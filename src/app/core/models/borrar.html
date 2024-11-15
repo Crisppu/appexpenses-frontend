@@ -1,0 +1,131 @@
+<div class="login">
+  <div class="login__container">
+    <div class="login__header">
+      <h1 class="login__title">💰 Personal finance</h1>
+      <p class="login__subtitle">Log in to manage your finances</p>
+    </div>
+
+    <div class="login__form-wrapper">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login__form">
+        <div class="login__form-inputs">
+          <!-- Email Input -->
+          <div class="login__form-group">
+            <span class="p-float-label">
+              <input
+                pInputText
+                id="email"
+                formControlName="email"
+                class="login__input-email"
+              />
+              <label for="email">Email</label>
+            </span>
+            <small
+              class="login__error"
+              *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+            >
+              Email is required
+            </small>
+          </div>
+
+          <!-- Password Input -->
+          <div class="login__form-group">
+            <span class="p-float-label">
+              <p-password
+                id="password"
+                formControlName="password"
+                [toggleMask]="true"
+                [feedback]="false"
+                [style]="{'width':'100%'}"
+                [inputStyle]="{'width':'100%'}"
+              ></p-password>
+              <label for="password">Password</label>
+            </span>
+            <small
+              class="login__error"
+              *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+            >
+              Password is required
+            </small>
+          </div>
+        </div>
+
+        <!-- Remember Me & Forgot Password -->
+        <div class="login__options">
+          <div class="login__remember">
+            <p-checkbox
+              formControlName="rememberMe"
+              [binary]="true"
+              inputId="rememberMe"
+            ></p-checkbox>
+            <label for="rememberMe" class="login__remember-label">Remember me</label>
+          </div>
+          <a
+            class="login__forgot-password"
+            (click)="onForgotPassword()"
+          >
+            Did you forget your password?
+          </a>
+        </div>
+
+        <div class="login__form-actions">
+          <!-- Login Button -->
+          <p-button
+            label="Login"
+            type="submit"
+            [loading]="loading"
+            styleClass="login__submit-btn"
+          ></p-button>
+
+          <!-- Divider -->
+          <div class="login__divider">
+            <div class="login__divider-line"></div>
+            <div class="login__divider-text">
+              <span>Or continue with</span>
+            </div>
+          </div>
+
+          <!-- Social Login Buttons -->
+          <div class="login__social">
+            <div class="login__social-item">
+              <p-button
+                label="Google"
+                icon="pi pi-google"
+                severity="secondary"
+                (onClick)="onGoogleLogin()"
+                styleClass="login__social-btn login__social-btn--google"
+              ></p-button>
+            </div>
+            <div class="login__social-item">
+              <p-button
+                label="Facebook"
+                icon="pi pi-facebook"
+                severity="secondary"
+                (onClick)="onFacebookLogin()"
+                styleClass="login__social-btn login__social-btn--facebook"
+              ></p-button>
+            </div>
+          </div>
+
+          <!-- Sign Up Link -->
+          <div class="login__signup">
+            <span class="login__signup-text">Don't you have an account?</span>
+            <a
+              class="login__signup-link"
+              (click)="onRegister()"
+            >
+              Register
+            </a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Error Message -->
+  <p-message
+    *ngIf="showError"
+    severity="error"
+    text="The credentials are incorrect"
+    styleClass="login__error-message"
+  ></p-message>
+</div>
