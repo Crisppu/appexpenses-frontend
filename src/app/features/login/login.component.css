@@ -5,6 +5,7 @@
 .login__title, .login__subtitle{
   text-align: center;
 }
+
 .login__form-wrapper{
   width: 34.375rem;
   min-width: 21.875rem;
