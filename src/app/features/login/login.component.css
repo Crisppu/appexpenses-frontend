@@ -7,7 +7,8 @@
 }
 .login__form-wrapper{
   width: 34.375rem;
-  padding: 1rem;
+  min-width: 21.875rem;
+  padding: 1.5rem;
   background-color: #f1eded;
   border-radius: 0.625rem;
   display: flex;
@@ -28,6 +29,7 @@
 .login__options{
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .login__divider-text {
@@ -53,4 +55,16 @@
 .login__signup{
   display: flex;
   justify-content: center;
+  gap: 5px;
+}
+
+@media screen and (max-width:47.9375rem){
+  .login__form-wrapper{
+    width: 21.875rem;
+  }
+  .login__options{
+    flex-direction: column;
+    align-items: initial;
+  }
+
 }
