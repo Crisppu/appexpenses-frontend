@@ -11,15 +11,21 @@
           id="email"
           formControlName="email"
           class="login__form-input"
+          [ngClass]="{'ng-dirty ng-invalid': loginForm.get('email')?.invalid && loginForm.get('email')?.touched}"
           />
           <label for="email">Email</label>
         </span>
         <small
-        class="login__error"
+        class="p-error block"
         *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
-        >
+      >
+        <span *ngIf="loginForm.get('email')?.errors?.['required']">
           Email is required
-        </small>
+        </span>
+        <span *ngIf="loginForm.get('email')?.errors?.['email']">
+          Please enter a valid email
+       </span>
+      </small>
       </div>
       <!-- Password Input -->
       <div class="login__form-group">
@@ -32,14 +38,21 @@
             [feedback]="false"
             [style]="{'width':'100%'}"
             [inputStyle]="{'width':'100%'}"
+            [ngClass]="{'ng-dirty ng-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+
           ></p-password>
           <label for="password">Password</label>
         </span>
         <small
-        class="login__error"
-        *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          class="p-error block"
+          *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
         >
-          Password is required
+          <span *ngIf="loginForm.get('password')?.errors?.['required']">
+            The password is required
+          </span>
+          <span *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            The password must have at least 6 characters
+          </span>
         </small>
       </div>
       <!-- Remember Me & Forgot Password -->
@@ -106,5 +119,4 @@
       </a>
     </div>
   </div>
-
 </div>
