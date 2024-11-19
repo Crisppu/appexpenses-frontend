@@ -16,7 +16,7 @@ import { LoginComponent } from "./features/login/login.component";
 })
 export class AppComponent {
   title = 'appexpenses-frontend';
-  isActive = true;
+  isActive = false;
 
   onStateChange(newState: boolean) {
     this.isActive = newState;
