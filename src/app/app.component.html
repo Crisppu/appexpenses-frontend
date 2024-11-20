@@ -1,9 +1,1 @@
-<div *ngIf="!isActive">
-  <div>
-    <router-outlet />
-  </div>
-</div>
-
-<div class="login-container" *ngIf="isActive">
-  <app-login [isActive]="isActive" (stateChange)="onStateChange($event)"></app-login>
-</div>
+<router-outlet />
